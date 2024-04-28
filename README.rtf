@@ -1,0 +1,130 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww14340\viewh11960\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Contains all code used in \'93A mathematical model for wound healing in the reef-building coral pocillopora damicornis\'94\
+\
+Authors: Quintessa Hay, Eunice Pak, Luke Gardner, Anna Shaw, Liza M. Roger, Nastassja A. Lewinski, Rebecca A. Segal, and Angela M. Reynolds\
+\
+\
+\
+General:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 circ_data.txt - Mean data for the circular wound, used for parameter estimation\
+\
+coral_ODEs_rhs.m - ODE file for the mathematical model\
+\
+finalfit.txt - Final parameter set\
+\
+lin_data.txt - Mean data for the linear wound, used for parameter estimation\
+\
+solve_coral_odes.m - Simulates plots for the coral model using the final parameter fit\
+\
+steadystate_analytical.m - Calculates the analytical steady state values for the variables A and F\
+\
+steadystate_num.m - Calculates the numerical steady state values for the variables A and F, used to compare with the analytical steady state\
+\
+wound_healing_data.m - Produces plots of the wound data for the individual wounds\
+
+\f0\b \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Latin Hypercube Sampling:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 coral_sims_check_both.m - Used to find the best fit parameter set from the Latin hypercube sampling\
+\
+LHS_bestfit.txt - Best parameter set selected from the LHS matrix\
+\
+LHSmatrix.txt - LHS matrix for the coral model parameters\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 setup_lhs_matrix_unif_coral.m - Used to generate the LHS matrix for the coral model\
+
+\f0\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+Sensitivity Analysis & Identifiable Set:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 calc_CI.m - Used for calculating the collinearity indices for combinations of parameters, this used used to select the identifiable set\
+\
+covariance.m - Used to calculate the subset of uncorrelated parameters (<0.95)\
+\
+DriverBasic_sens.m - Run file for local sensitivity analysis of the coral model\
+\
+load_global.m - Loads parameter values and initial conditions for local sensitivity analysis\
+\
+model_sol.m - Simulates coral model for local sensitivity analysis\
+\
+modelBasic.m - Coral mathematical model ODEs for local sensitivity analysis\
+\
+Sens.mat - Output from local sensitivity analysis\
+\
+senseq.m - Main function solvers for local sensitivity analysis \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 \
+\
+\
+\
+Parameter Estimation:
+\f1\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 cpe_fit.txt - Parameter fit from the initial optimization routine\
+\
+cpe_main.m - Main file for parameter estimation, calls fmincon\
+\
+cpe_ main_finalfit.m - Main file for parameter optimization using only the identifiable set, calls fmincon\
+\
+cpe_run.m - Run file for parameter estimation, establishes initial guess and plots results\
+\
+cpe_run_finalfit.m - Run file for parameter estimation using the identifiable set, establishes initial guess and plots results\
+\
+cpe_solver.m - Solver file for parameter estimation, simulates model and calculates objective function (RSS)\
+\
+cpe_solver_finalfit.m - Solver file for parameter estimation using the identifiable set, simulates model and calculates objective function (RSS)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+
+\f0\b Additional Simulations (varying model parameters)
+\f1\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 heal_time_heatmap.m - Plot of varying C_infinity and max_pd, generates a heat map\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 modpars_plots - Simulates variations in the parameters related to accumulation and removal of debris and foreign matter (k_m and k_ma) and availability of amoebocytes and fibroblasts (s_c)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+}
