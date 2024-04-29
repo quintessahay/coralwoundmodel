@@ -5,7 +5,7 @@ close all
 % the only difference between the two wounds is the C_infinity
 % (initial wound size - mm^2) and max_pd (maximum distance 
 % between polyps
-params_mat=readmatrix('final_fit.txt');
+params_mat=readmatrix('finalfit.txt');
 params=params_mat;
 params1=params;
 params2=params;
@@ -48,6 +48,9 @@ R2 = solnew2(4,2:end)'-data2(2:end,2);
 fc_lin = R1'*R1/length(R1);
 fc_circ = R2'*R2/length(R2);
 
+scaled_C1 = u1(4,:)./max(u1(4,:));
+scaled_C2 = u2(4,:)./max(u2(4,:));
+
 %% Plot some figures:
 
 figure
@@ -56,7 +59,7 @@ h1=tiledlayout(1,2); % This plots the C curve with the data overlay
     plot(t1,cplot1,'LineWidth',2);
     hold on
     plot(data1(:,1),data1(:,2),'*','LineWidth',2)
-    ylabel('C (mm\textsuperscript{2})','FontSize',30,'FontName','Arial');  
+    ylabel('C (mm^2)','FontSize',30,'FontName','Arial');  
     xlabel('Hours','FontSize',30,'FontName','Arial');
     set(gca,'LineWidth',2,'FontSize',30,'FontName','Arial')
     nexttile
